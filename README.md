@@ -1,23 +1,19 @@
-# Springy Store μServices ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mohamed-taman/Springy-Store-Microservices) [![Release Codename](https://img.shields.io/badge/codename-Spike-yellow.svg)](https://github.com/mohamed-taman/Springy-Store-Microservices/releases)
-[![Twitter Follow](https://img.shields.io/twitter/follow/_tamanm?label=follow%20me&style=social)](https://twitter.com/_tamanm)
+# Springy Store μServices ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mohamed-taman/Springy-Store-Microservices) [![Release Codename](https://img.shields.io/badge/codename-Refresher_3-yellow.svg)](https://github.com/mohamed-taman/Springy-Store-Microservices/releases) [![BCH compliance](https://bettercodehub.com/edge/badge/mohamed-taman/Springy-Store-Microservices?branch=master)](https://bettercodehub.com/) | [![Twitter Follow](https://img.shields.io/twitter/follow/_tamanm?label=follow%20me&style=social)](https://twitter.com/_tamanm)
 
+## Important Note: This project's new milestone is to move The whole system to work on Kubernetes, so stay tuned.
+
+## Better Code Hub
+I analysed this repository according to the clean code standards on [Better Code Hub](https://bettercodehub.com/) just to get an independent opinion of how bad the code is. Surprisingly, the compliance score is high!
+## Introduction
 - This project is a development of a small set of **Spring Boot** and **Cloud** based Microservices projects that implement cloud-native intuitive, Reactive Programming, Event-driven, Microservices design patterns, and coding best practices.
 - The project follows [**CloudNative**](https://www.cncf.io/) recommendations and The [**twelve-factor app**](https://12factor.net/) methodology for building *software-as-a-service apps* to show how μServices should be developed and deployed.
 - This project uses cutting edge technologies like Docker, Kubernetes, Elasticsearch Stack for
- logging and monitoring, Java SE 14, MySQL, and MongoDB databases, all components developed with TDD in mind, covering integration & performance testing, and many more.
-
-------
-I am developing this project as stages, and all such steps are documented under the project **Springy Store μServices** [wiki page](https://github.com/mohamed-taman/Springy-Store-Microservices/wiki). Each such stage will be a release in its own, so you can go back and forward between versions to see the differences and how adding things solve specific problems we face.
-
-<u>For example, </u> in the first stage (1st release), I just created project structure, essential services' skeleton, integration between them, and finally write integration testing as well as semi-automated testing for the complete services' functionality.
-
-At the 1st stage, the **Recommendation** and **Review** microservices generate local in-memory data, and **Store Service** calls the other three services (*Product*, *Recommendation*, and *Review*) statically to generate client aggregate response for a specific product. Therefore, in: 
-
-- The second stage I will introduce **database integration**, then in (***done***)
-- The third stage I will add **Dockerization** of our services and **docker-compose**, and in (***done***)
-- In the fourth stage, I will introduce **service discovery**, and so on.
-
-## System components Structure
+ logging and monitoring, Java SE 15, MySQL, and MongoDB databases, all components developed with TDD in mind, covering integration & performance testing, and many more.
+ - This project is going to be developed as stages, and all such stage steps are documented under
+  the project **Springy Store μServices** [wiki page](https://github.com/mohamed-taman/Springy-Store-Microservices/wiki).
+---
+## Getting started
+### System components Structure
 Let's explain first the system structure to understand its components:
 ```
 Springy Store μService --> Parent folder. 
@@ -50,24 +46,7 @@ Springy Store μService --> Parent folder.
 ```
 Now, as we have learned about different system components, then let's start.
 
-## Getting started
-
-The first stage, aka (**Release v1.0**), is about creating and implementing a set of project Microservices.
-
-### Creating a Set of Cooperating Microservices (Release v1.0)
-
-The following topics are going to be covered in this 1st stage (other stages topics will be documented in the project wiki pages):
-
-- Introducing the microservice landscape.
-- Generating skeleton microservices.
-- Adding RESTful APIs.
-- Adding a **Store**, **Product**, **Recommendation**, and **Review** microservices.
-- Adding error handling.
-- Testing the APIs manually.
-- Adding automated tests of microservices in isolation.
-- Adding semi-automated tests to a microservice landscape.
-
-### System Boundary - μServices Landscape (Release 5.5-Latest)
+### System Boundary - μServices Landscape
 
 ![System Boundary](docs/diagram/app_ms_landscape.png)
 
@@ -75,15 +54,17 @@ The following topics are going to be covered in this 1st stage (other stages top
 
 The following are the initially required software pieces:
 
-1. **Git**: it can be downloaded and installed from https://git-scm.com/downloads.
+1. **Maven**: Apache Maven is a software project management and comprehension tool, it can be downloaded from here https://maven.apache.org/download.cgi
 
-2. **Java 14**: it can be downloaded and installed from https://www.oracle.com/technetwork/java/javase/downloads/index.html.
+1. **Git**: it can be downloaded and installed from https://git-scm.com/downloads
 
-3. **curl**: this command-line tool for testing HTTP-based APIs can be downloaded and installed from https://curl.haxx.se/download.html.
+1. **Java 15 EA**: it can be downloaded and installed from https://jdk.java.net/15/
 
-4. **jq**: This command-line JSON processor can be downloaded and installed from https://stedolan.github.io/jq/download/.
+1. **curl**: this command-line tool for testing HTTP-based APIs can be downloaded and installed from https://curl.haxx.se/download.html
 
-5. Spring Boot Initializer: This *Initializer* generates *spring* boot project with just what you need to start quickly! Start from here https://start.spring.io/.
+1. **jq**: This command-line JSON processor can be downloaded and installed from https://stedolan.github.io/jq/download/
+
+1. Spring Boot Initializer: This *Initializer* generates *spring* boot project with just what you need to start quickly! Start from here https://start.spring.io/
 
 6. **Docker Desktop**: The fastest way to containerize applications on your desktop, and you can download it from here [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
@@ -209,6 +190,7 @@ Creating ssm_auth-server_1    ... done
 Creating ssm_mysql_1          ... done
 Creating ssm_mongodb_1        ... done
 Creating ssm_rabbitmq_1       ... done
+Creating ssm_zipkin_1         ... done
 Creating ssm_store_1          ... done
 Creating ssm_review_1         ... done
 Creating ssm_product_1        ... done
@@ -238,7 +220,7 @@ In browser point to this URL [http://localhost:5672/](http://localhost:5672/) `u
       λ docker-compose -p ssm -f docker-compose-kafka.yml up -d
      ```
 #### Check All Services Health
-From Storefront Service we can check all the core services health when you have all the
+From Store front Service we can check all the core services health when you have all the
  microservices up and running using Docker Compose,
 ```bash
 mohamed.taman@DTLNV8 ~/springy-store-microservices 
@@ -273,15 +255,19 @@ Now it's time to test all the application functionality as one part. To do so ju
 
 ```bash
 mohamed.taman@DTLNV8 ~/springy-store-microservices 
-λ ./test-em-all.sh start stop
+λ ./test-em-all.sh start
 ```
+> You can use `stop` switch with `start`, that will 
+>1. start docker, 
+>2. run the tests, 
+>3. stop the docker instances.
 
 The result will look like this:
 
 ```bash
 Starting 'Springy Store μServices' for [Blackbox] testing...
 
-Start Tests: Tue, May 26, 2020 2:09:36 AM
+Start Tests: Tue, May 31, 2020 2:09:36 AM
 HOST=localhost
 PORT=8443
 Restarting the test environment...
@@ -289,19 +275,12 @@ $ docker-compose -p ssm down --remove-orphans
 $ docker-compose -p ssm up -d
 Wait for: curl -k https://localhost:8443/actuator/health... , retry #1 , retry #2, {"status":"UP"} DONE, continues...
 Test OK (HTTP Code: 200)
-Test OK (HTTP Code: 200)
-Test OK (HTTP Code: 200)
-Test OK (HTTP Code: 200)
+...
 Test OK (actual value: 1)
 Test OK (actual value: 3)
 Test OK (actual value: 3)
 Test OK (HTTP Code: 404, {"httpStatus":"NOT_FOUND","message":"No product found for productId: 13","path":"/store/api/v1/products/13","time":"2020-04-12@12:34:25.144+0000"})
-Test OK (HTTP Code: 200)
-Test OK (actual value: 113)
-Test OK (actual value: 0)
-Test OK (actual value: 3)
-Test OK (HTTP Code: 200)
-Test OK (actual value: 213)
+...
 Test OK (actual value: 3)
 Test OK (actual value: 0)
 Test OK (HTTP Code: 422, {"httpStatus":"UNPROCESSABLE_ENTITY","message":"Invalid productId: -1","path":"/store/api/v1/products/-1","time":"2020-04-12@12:34:26.243+0000"})
@@ -314,31 +293,26 @@ Test OK (HTTP Code: 403, )
 Start Circuit Breaker tests!
 Test OK (actual value: CLOSED)
 Test OK (HTTP Code: 500, {"timestamp":"2020-05-26T00:09:48.784+00:00","path":"/store/api/v1/products/2","status":500,"error":"Internal Server Error","message":"Did not observe any item or terminal signal within 2000ms in 'onErrorResume' (and no fallback has been configured)","requestId":"4aa9f5e8-119"})
-Test OK (actual value: Did not observe any item or terminal signal within 2000ms)
-Test OK (HTTP Code: 500, {"timestamp":"2020-05-26T00:09:51.033+00:00","path":"/store/api/v1/products/2","status":500,"error":"Internal Server Error","message":"Did not observe any item or terminal signal within 2000ms in 'onErrorResume' (and no fallback has been configured)","requestId":"4aa9f5e8-120"})
-Test OK (actual value: Did not observe any item or terminal signal within 2000ms)
-Test OK (HTTP Code: 500, {"timestamp":"2020-05-26T00:09:53.276+00:00","path":"/store/api/v1/products/2","status":500,"error":"Internal Server Error","message":"Did not observe any item or terminal signal within 2000ms in 'onErrorResume' (and no fallback has been configured)","requestId":"4aa9f5e8-121"})
+...
 Test OK (actual value: Did not observe any item or terminal signal within 2000ms)
 Test OK (HTTP Code: 200)
 Test OK (actual value: Fallback product2)
 Test OK (HTTP Code: 200)
 Test OK (actual value: Fallback product2)
 Test OK (HTTP Code: 404, {"httpStatus":"NOT_FOUND","message":"Product Id: 14 not found in fallback cache!","path":"/store/api/v1/products/14","timestamp":"2020-05-26@00:09:53.998+0000"})
-Test OK (actual value: Product Id: 14 not found in fallback cache!)
-Will sleep for 10 sec waiting for the CB to go Half Open...
-Test OK (actual value: HALF_OPEN)
-Test OK (HTTP Code: 200)
-Test OK (actual value: product name C)
-Test OK (HTTP Code: 200)
-Test OK (actual value: product name C)
-Test OK (HTTP Code: 200)
+...
 Test OK (actual value: product name C)
 Test OK (actual value: CLOSED)
 Test OK (actual value: CLOSED_TO_OPEN)
 Test OK (actual value: OPEN_TO_HALF_OPEN)
 Test OK (actual value: HALF_OPEN_TO_CLOSED)
-End, all tests OK: Tue, May 26, 2020 2:10:09 AM
+End, all tests OK: Tue, May 31, 2020 2:10:09 AM
 ```
+### Tracking the services with Zipkin
+Now, you can now track Microservices interactions throughout Zipkin UI from the following link:
+[http://localhost:9411/zipkin/](http://localhost:9411/zipkin/)
+![Zipkin UI](docs/diagram/Zipkin.png)
+
 ### Closing The Story
 
 Finally, to close the story, we need to shut down Microservices manually service by service, hahaha just kidding, run the following command to shut them all:
@@ -361,6 +335,7 @@ Stopping ssm_rabbitmq_1       ... done
 Stopping ssm_eureka_1         ... done
 Stopping ssm_gateway_1        ... done
 Stopping ssm_config-server_1  ... done
+Stopping ssm_zipkin_1         ... done
 Removing ssm_recommendation_1 ... done
 Removing ssm_product_1        ... done
 Removing ssm_review_1         ... done
@@ -372,10 +347,18 @@ Removing ssm_rabbitmq_1       ... done
 Removing ssm_eureka_1         ... done
 Removing ssm_gateway_1        ... done
 Removing ssm_config-server_1  ... done
+Removing ssm_zipkin_1         ... done
 Removing network ssm_default
 ```
 ### The End
-Happy coding :)
+In the end, I hope you enjoyed the application and find it useful, as I did when I was developing it. 
+If you would like to enhance, please: 
+- **Open PRs**, 
+- Give **feedback**, 
+- Add **new suggestions**, and
+- Finally, give it a 🌟.
+
+*Happy Coding ...* 🙂
 
 # License
 Copyright (C) 2017-2020 Mohamed Taman, Licensed under the MIT License.
